@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devops-app1
+  name: devops-app1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-app1-pod
+  template:
+    metadata:
+      labels:
+        app: devops-app1-pod
+    spec:
+      containers:
+      - name: devops-app1
+        image: fizzo/devops-app1:v1.0
+        ports:
+        - containerPort: 5000
+      restartPolicy: Always
